@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="list-of-properties"></ion-back-button>
+        </ion-buttons>
+    <ion-title>{{ property.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Property</ion-card-subtitle>
+      <ion-card-title>{{property.name}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <img [src]="property.image_url" alt="">
+      <br>
+      <h2>{{property.location}}</h2>
+      <p>{{property.description}}
+        <br>
+        ${{property.price}}/night
+    </ion-card-content>
+  </ion-card>
+  
+  <div class="ion-text-center"> 
+      <ion-button (click)="bookNow()">Book now</ion-button>
+  </div>
+</ion-content>
+

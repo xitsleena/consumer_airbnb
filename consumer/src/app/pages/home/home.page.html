@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Consumer Airbnb 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid> 
+  <h1 align="center">Welcome back!</h1>
+    <ion-col>
+      <div class= "ionpadding">
+        <ion-input align="center" type = "email" placeholder="Username or Email" [(ngModel)]="email"></ion-input>
+      </div>
+
+      <div class= "ionpadding">
+        <ion-input align="center" [type] ="password_type" placeholder="Password"[(ngModel)]="password"></ion-input>
+        <ion-icon name="eye" slot="end" (click)="togglePasswordMode()"></ion-icon>
+      </div>
+
+      <section>
+        <ion-button align="center" expand="block" (click)="login()">Login</ion-button>
+        <ion-button align="center" expand="block" (click)="navToRegistration()">Register</ion-button>
+      </section>
+    </ion-col>
+  </ion-grid>
+</ion-content>
