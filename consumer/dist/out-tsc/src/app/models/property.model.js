@@ -1,11 +1,12 @@
 var Property = /** @class */ (function () {
-    function Property(id, name, location, price, description, image_url) {
-        this.id = id;
-        this.name = name;
+    function Property(title, location, pricePerNight, numberOfPeople, description, imgUrl, hostId) {
+        this.title = title;
         this.location = location;
-        this.price = price;
+        this.pricePerNight = pricePerNight;
+        this.numberOfPeople = numberOfPeople;
         this.description = description;
-        this.image_url = image_url;
+        this.imgUrl = imgUrl;
+        this.hostId = hostId;
     }
     return Property;
 }());

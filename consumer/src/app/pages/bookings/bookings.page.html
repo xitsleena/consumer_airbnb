@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-          <ion-back-button defaultHref="home"></ion-back-button>
+          <ion-back-button defaultHref="profile"></ion-back-button>
         </ion-buttons>
-    <ion-title>Explore Properties</ion-title>
+    <ion-title>Your Bookings</ion-title>
     
   </ion-toolbar>
 </ion-header>
@@ -12,29 +12,26 @@
   <div class="ion-padding">
     <ion-grid>
       <ion-row>
-        <ion-col *ngFor="let property of properties" >
-          <ion-item [routerLink]="['/property', property.id]">
+        <ion-col *ngFor="let booking of bookings" >
+          <ion-item [routerLink]="['/bookings', booking.id]">
             <ion-card>
                 <ion-card-header>
                   <ion-card-subtitle>Property</ion-card-subtitle>
-                  <ion-card-title>{{property.title}}</ion-card-title>
+                  <ion-card-title>{{booking.title}}</ion-card-title>
                 </ion-card-header>
               
                 <ion-card-content>
                   <img [src]="property.imgUrl" alt="">
                   <br>
-                  <h2>{{property.location}}</h2>
-                  <p>{{property.description}}
+                  <h2>{{booking.location}}</h2>
+                  <p>{{booking.description}}
                     <br>
-                    ${{property.pricePerNight}}/night
+                    ${{booking.pricePerNight}}/night
                 </ion-card-content>
             </ion-card>
           </ion-item>  
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-button align="center" expand="block" (click)="navToProfile()">Profile</ion-button>
   </div>
 </ion-content>
-      
-      

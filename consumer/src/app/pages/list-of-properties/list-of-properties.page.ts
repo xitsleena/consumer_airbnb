@@ -31,7 +31,9 @@ export class ListOfPropertiesPage implements OnInit {
 
   }
 
-
+  navToProfile(){
+    this.navCtrl.navigateForward("profile");
+  }
 
   ngOnInit() {
     this.properties = this.propertyService.showListings();

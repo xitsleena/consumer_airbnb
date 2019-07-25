@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { HttpResponse } from '../../models/http-response';
+import { UserService } from '../../services/user/user.service';
+import { User } from 'src/app/models/user.model';
+
 
 @Component({
   selector: 'app-registration',
@@ -18,7 +21,8 @@ export class RegistrationPage implements OnInit {
 
   constructor(private navCtrl: NavController,
               public toastCtrl: ToastController,
-              private http:HttpClient) { }
+              private http:HttpClient,
+              private userService: UserService) { }
 
   ngOnInit() {
   }
@@ -27,9 +31,9 @@ export class RegistrationPage implements OnInit {
     this.navCtrl.navigateForward("list-of-properties");
   }
 
-  async presentErrorToast() {
+  async presentErrorToast(message?: string) {
     const toast = await this.toastCtrl.create({
-      message: 'User already exists!',
+      message: message,
       duration: 2000,
       position: 'top',
       color: 'danger'
@@ -51,20 +55,20 @@ export class RegistrationPage implements OnInit {
     if (this.name && this.surname && this.email && 
         this.password && this.cpassword && 
         this.password==this.cpassword){
-          console.log("goes into if");
           this.http.post('http://localhost:5000/api/auth/registration', {name: this.name, surname: this.surname, 
-          email: this.email, password: this.password, role: "user"}).subscribe((response:HttpResponse) => {
-        if (response.success){
+          email: this.email, password: this.password, role: "user"}).subscribe((response) => {
+        if (response){
           this.presentSuccessToast(this.email);
+          this.userService.setUser(response[0]);
           this.navToListings();
         }
         else{
-          this.presentErrorToast();
+          this.presentErrorToast("User already exists!");
         }
       });
     }
     else {
-      console.log("not all fields are filled in");
+      this.presentErrorToast("Please check all fields!");
     }
   }
 

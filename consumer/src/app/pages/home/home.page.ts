@@ -3,6 +3,7 @@ import { NavController, ToastController } from '@ionic/angular';
 import { UserService } from '../../services/user/user.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpResponse } from '../../models/http-response';
+import { User } from 'src/app/models/user.model';
 
 
 @Component({
@@ -14,6 +15,8 @@ export class HomePage {
   email: string; 
   password: string;
   name: string;
+  id: string;
+  currentUser: User; 
 
   password_type: string = 'password';
 
@@ -62,9 +65,10 @@ export class HomePage {
 
   login() {
     if (this.email && this.password) {
-      this.http.post('http://localhost:5000/api/auth/login', {email: this.email, password: this.password}).subscribe((response:HttpResponse) => {
-        if (response.success){
+      this.http.post('http://localhost:5000/api/auth/login', {email: this.email, password: this.password}).subscribe((response) => {
+        if (response){
           this.presentSuccessToast(this.email);
+          this.userService.setUser(response[0]);
           this.navToListings();
         }
         else{
@@ -73,4 +77,7 @@ export class HomePage {
       });
     } 
   }
+
+
+
 }
