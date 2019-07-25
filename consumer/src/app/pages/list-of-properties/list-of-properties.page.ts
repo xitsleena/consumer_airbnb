@@ -26,7 +26,6 @@ export class ListOfPropertiesPage implements OnInit {
     this.currentUser = this.userService.currentUser;
     if (!this.currentUser) {
       this.currentUser = this.userService.getAllUsers()[0];
-      this.navCtrl.navigateForward("home");
     }
     this.properties = this.propertyService.getAllProperties();
   }

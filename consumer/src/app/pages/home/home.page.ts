@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
 import { UserService } from '../../services/user/user.service';
+import { HttpClient } from '@angular/common/http';
+import { HttpResponse } from '../../models/http-response';
+
 
 @Component({
   selector: 'app-home',
@@ -10,8 +13,12 @@ import { UserService } from '../../services/user/user.service';
 export class HomePage {
   email: string; 
   password: string;
+  name: string;
 
   password_type: string = 'password';
+
+
+
   
   togglePasswordMode() {   
    this.password_type = this.password_type === 'text' ? 'password' : 'text';
@@ -19,7 +26,8 @@ export class HomePage {
 
   constructor(private navCtrl: NavController, 
               private userService: UserService,
-              public toastCtrl: ToastController) {}
+              public toastCtrl: ToastController,
+              private http:HttpClient) {}
 
   ngOnInit() {
   }
@@ -53,13 +61,17 @@ export class HomePage {
   }
 
   login() {
-    const user = this.userService.login(this.email, this.password);
-    if (user) {
-      this.presentSuccessToast(user.firstName);
-      this.navToListings();
+    if (this.email && this.password) {
+      this.http.post('http://localhost:5000/api/auth/login', {email: this.email, password: this.password}).subscribe((response:HttpResponse) => {
+        if (response.success){
+          this.presentSuccessToast(this.email);
+          this.navToListings();
+        }
+        else{
+          this.presentErrorToast();
+        }
+      });
     } 
-    else {
-      this.presentErrorToast();
-    }
+    
   }
 }

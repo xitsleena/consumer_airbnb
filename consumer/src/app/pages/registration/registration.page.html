@@ -13,17 +13,16 @@
         <div class="ion-padding">
           <h1>New Airbnb User</h1>
           <h3>Hello!</h3>
-            <ion-input [type] = "firstname" placeholder="First Name" name = "firstname" [(ngModel)]="firstname" required ></ion-input>
-            <ion-input [type] = "lastname" placeholder="Last Name" name = "lastname" [(ngModel)]="lastname" required></ion-input>
+            <ion-input [type] = "name" placeholder="First Name" name = "firstname" [(ngModel)]="name" required ></ion-input>
+            <ion-input [type] = "surname" placeholder="Last Name" name = "lastname" [(ngModel)]="surname" required></ion-input>
             <ion-input [type] = "email" placeholder="Email" name = "email" [(ngModel)]="email" required></ion-input>
-            <ion-input [type] = "username" placeholder="Username" name = "username" [(ngModel)]="username" required></ion-input>
             <ion-input input type = "password" placeholder="Password" name = "password" [(ngModel)]="password" required></ion-input>
             <ion-input input type = "password" placeholder="Confirm Password" name = "cpassword" [(ngModel)]="cpassword" required></ion-input>
         </div>
       </ion-item>
   
       <section>
-        <ion-button expand="block" type="submit" (click)="navToProperties()" class="ion-no-margin">Register</ion-button>
+        <ion-button expand="block" type="submit" (click)="register()" class="ion-no-margin">Register</ion-button>
       </section>
     </form>
   </ion-app>
