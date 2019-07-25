@@ -1,10 +1,12 @@
 export class Property {
+    public id: number;
     constructor(
-        public id: number,
-        public name: string,
+        public title: string,
         public location: string,
-        public price: number,
+        public pricePerNight: number,
+        public numberOfPeople: number,
         public description: string,
-        public image_url: string,
+        public imgUrl: string,
+        public hostId: number
     ) { }
 }

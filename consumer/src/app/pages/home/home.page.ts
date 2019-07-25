@@ -72,6 +72,5 @@ export class HomePage {
         }
       });
     } 
-    
   }
 }

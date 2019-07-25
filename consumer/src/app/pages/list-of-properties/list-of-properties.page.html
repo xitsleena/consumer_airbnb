@@ -17,16 +17,16 @@
             <ion-card>
                 <ion-card-header>
                   <ion-card-subtitle>Property</ion-card-subtitle>
-                  <ion-card-title>{{property.name}}</ion-card-title>
+                  <ion-card-title>{{property.title}}</ion-card-title>
                 </ion-card-header>
               
                 <ion-card-content>
-                  <img [src]="property.image_url" alt="">
+                  <img [src]="property.imgUrl" alt="">
                   <br>
                   <h2>{{property.location}}</h2>
                   <p>{{property.description}}
                     <br>
-                    ${{property.price}}/night
+                    ${{property.pricePerNight}}/night
                 </ion-card-content>
             </ion-card>
           </ion-item>  

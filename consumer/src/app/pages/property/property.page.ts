@@ -19,7 +19,7 @@ export class PropertyPage implements OnInit {
 
   ngOnInit() {
     let propertyId: number = parseInt(this.route.snapshot.paramMap.get('id'));
-    this.property = this.propertyService.getProperty(propertyId);
+    //this.property = this.propertyService.getProperty(propertyId);
   }
 
   bookNow(){ }

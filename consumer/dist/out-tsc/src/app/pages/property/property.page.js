@@ -9,7 +9,7 @@ var PropertyPage = /** @class */ (function () {
     }
     PropertyPage.prototype.ngOnInit = function () {
         var propertyId = parseInt(this.route.snapshot.paramMap.get('id'));
-        this.property = this.propertyService.getProperty(propertyId);
+        //this.property = this.propertyService.getProperty(propertyId);
     };
     PropertyPage.prototype.bookNow = function () { };
     PropertyPage = tslib_1.__decorate([

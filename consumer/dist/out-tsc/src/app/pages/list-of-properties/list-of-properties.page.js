@@ -3,18 +3,16 @@ import { UserService } from './../../services/user/user.service';
 import { PropertyService } from './../../services/property/property.service';
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
 var ListOfPropertiesPage = /** @class */ (function () {
-    function ListOfPropertiesPage(userService, propertyService, navCtrl) {
+    function ListOfPropertiesPage(userService, propertyService, navCtrl, http) {
         this.userService = userService;
         this.propertyService = propertyService;
         this.navCtrl = navCtrl;
+        this.http = http;
     }
     ListOfPropertiesPage.prototype.ngOnInit = function () {
-        this.currentUser = this.userService.currentUser;
-        if (!this.currentUser) {
-            this.currentUser = this.userService.getAllUsers()[0];
-        }
-        this.properties = this.propertyService.getAllProperties();
+        this.properties = this.propertyService.showListings();
     };
     ListOfPropertiesPage = tslib_1.__decorate([
         Component({
@@ -24,7 +22,8 @@ var ListOfPropertiesPage = /** @class */ (function () {
         }),
         tslib_1.__metadata("design:paramtypes", [UserService,
             PropertyService,
-            NavController])
+            NavController,
+            HttpClient])
     ], ListOfPropertiesPage);
     return ListOfPropertiesPage;
 }());

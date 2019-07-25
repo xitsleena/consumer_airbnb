@@ -7,6 +7,7 @@ var RegistrationPage = /** @class */ (function () {
         this.navCtrl = navCtrl;
         this.toastCtrl = toastCtrl;
         this.http = http;
+        this.surname = "";
         this.role = "role";
     }
     RegistrationPage.prototype.ngOnInit = function () {

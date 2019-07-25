@@ -5,6 +5,8 @@ import { PropertyService } from './../../services/property/property.service';
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { HttpResponse } from '../../models/http-response';
 
 @Component({
   selector: 'app-list-of-properties',
@@ -14,19 +16,26 @@ import { Router } from '@angular/router';
 export class ListOfPropertiesPage implements OnInit {
   currentUser: User;
   properties: Property[];
-  
+  title: string; 
+  location: string;
+  description: string; 
+  numberOfPeople: number; 
+  imgUrl: string; 
+  hostId: string; 
+
   constructor(
     public userService: UserService,
     public propertyService: PropertyService,
-    public navCtrl: NavController) {
+    public navCtrl: NavController,
+    private http:HttpClient) {
 
   }
+
+
 
   ngOnInit() {
-    this.currentUser = this.userService.currentUser;
-    if (!this.currentUser) {
-      this.currentUser = this.userService.getAllUsers()[0];
-    }
-    this.properties = this.propertyService.getAllProperties();
+    this.properties = this.propertyService.showListings();
   }
+
+
 }
