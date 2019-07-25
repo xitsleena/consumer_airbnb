@@ -45,7 +45,7 @@ export class HomePage {
 
   async presentErrorToast() {
     const toast = await this.toastCtrl.create({
-      message: 'Incorrect username or password!',
+      message: 'Check fields!',
       duration: 2000,
       position: 'top',
       color: 'danger'
@@ -75,7 +75,8 @@ export class HomePage {
           this.presentErrorToast();
         }
       });
-    } 
+    }
+    this.presentErrorToast(); 
   }
 
 
