@@ -66,6 +66,7 @@ export class HomePage {
   login() {
     if (this.email && this.password) {
       this.http.post('http://localhost:5000/api/auth/login', {email: this.email, password: this.password}).subscribe((response) => {
+        debugger;
         if (response){
           this.presentSuccessToast(this.email);
           this.userService.setUser(response[0]);
